@@ -1,0 +1,21 @@
+COMMANDS:
+1.Wireshark:
+●basic command to start wireshark
+wireshark &
+2.nmap:
+●to perform simple ping
+nmap -sn vulnweb.com
+●to perform SYN scan
+nmap -sS vulnweb.com
+●to identify the service and version
+nmap -sV vulnweb.com
+●to scan a specific port
+nmap -p 80 --script http-headers vulnweb.com
+●to list host in network
+nmap -sL vulnweb.com
+●to perform UDP scan
+nmap -sU vulnweb.com
+●to identify the OS in network
+nmap -O vulnweb.com
+●to perform aggressive scan
+nmap -A vulnweb.com

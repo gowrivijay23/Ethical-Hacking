@@ -1,0 +1,31 @@
+COMMANDS:
+1.nslookup:
+●basic nslookup command
+nslookup vulnweb.com
+●to find name of the server 
+nslookup -type = ns vulnweb.com
+●to find the mail server
+nslookup -type = mx vulnweb.com
+●to find records of text domains
+nslookup -type = text vulnweb.com
+●to find soa(server oriented architecture) records of the server
+nslookup -type = soa vulnweb.com
+●to find DNS records for the domain using google’s public DNS 8.8.8.8
+nslookup -type=ANY vulnweb.com 8.8.8.8
+●Query the specific DNS server using google’s DNS
+nslookup vulnweb.com 8.8.8.8
+●Show verbose debugging information for the DNS query
+nslookup -debug vulnweb.com
+
+2.whatweb
+●to find technologies used in the server
+whatweb vulnweb.com
+●Get more verbose information about identified technologies.
+whatweb -v vulnweb.com
+●Perform an aggressive scan to find more technologies(aggressive levels-1,2,3).
+whatweb -a 1 vulnweb.com
+
+3.theHarvester
+●to find email, IP’s, subdomain of the server
+theHarvester -d vulnweb.com -l 10 -b google
+theHarvester -d vulnweb.com -l 10 -b bing
